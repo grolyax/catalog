@@ -1,0 +1,65 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 30px 10px 10px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(66, 74, 110);
+  img {
+    height: 150px;
+    width: auto;
+  }
+
+  .center_bar {
+    text-align: left;
+    margin: 0;
+    color: #ffffff;
+    h2 {
+      margin: 10px;
+    }
+    #type_museum {
+      margin: 0px 10px;
+      font-size: 18pt;
+      .museumName {
+      font-size: 24pt;
+      }       
+    }
+    .search_block {
+      display: flex;
+      justify-content: space-between;
+      margin: 0;
+      color: white;
+      .search {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 10px 0 10px;
+        input {
+         
+          height: 30px;
+          width: 250px;
+          border-radius: 10px;
+        }
+      }
+      p {
+        margin: 20px 10px 0 10px;
+      }
+    }
+  }
+    .navigation {
+      .navigation_bar {
+        display: flex; 
+      }
+      .user_block {
+        text-align: right;
+        padding: 0 20px;
+        font-size: 14pt;
+        p {
+          margin: 10px 0px;
+          color: #f8f8da;
+        }
+      }
+    }
+}
