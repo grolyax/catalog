@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import './formCard.scss';
+
 import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
 
@@ -23,34 +25,39 @@ export default class FormCard extends Component {
   }
 
   render() {
-    const { type } = this.props;
 
     return (
       <Formik
         initialValues={{
+          photo: '',
+          order: '',
           name: ''
+
         }}
         onSubmit={this.handleSubmit}
         validationSchema={this.validationSchema}
       >
         {({ handleSubmit, values }) => (
-          <Form onSubmit={handleSubmit}>
+          <Form className="card__form" onSubmit={handleSubmit}>
             <Field
-              type="img"
-              name="Фотография"
+             label="Name"
+              type="text"
+              name="photo"
               placeholder="перетащите фото"
             />
             <h2>Поля ввода</h2>
 
+            <label>Номер по порядку</label>
             <Field
-              type="number"
-              name="№ п/п"
+              type="text"
+              name="order"
               placeholder="порядковый номер"
             />
 
             <Field
-              type="number"
-              name="Наименование рус/бел"
+            label="название"
+              type="text"
+              name="name"
               placeholder="наименование/назва"
             />
 
@@ -101,7 +108,7 @@ export default class FormCard extends Component {
             </Field>
 
             <Field
-              type="number"
+              type="text"
               name="Размеры (мм)"
               placeholder="мм"
             />
@@ -110,12 +117,15 @@ export default class FormCard extends Component {
               name="Материал"
               component="select"
               placeholder="выберите из списка">
-              <option value="wood">Дерево</option>
-              <option value="plastic">Пластмасса</option>
-              <option value="metal">Металл</option>
+              <option value="wood">дерево</option>
+              <option value="plastic">пластмасса</option>
+              <option value="metal">металл</option>
               <option value="cloth">ткань</option>
-              <option value="glass">Стекло</option>
-              <option value="paper">Бумага</option>
+              <option value="glass">стекло</option>
+              <option value="paper">бумага</option>
+              <option value="ceramics">керамика</option>
+              <option value="porcelain">фарфор</option>
+              <option value="leather">кожа</option>
             </Field>
 
             <Field
@@ -125,7 +135,7 @@ export default class FormCard extends Component {
             />
 
             <Field
-              type="number"
+              type="text"
               name="№ акта"
               placeholder="номер акта приёмки"
             />
@@ -157,7 +167,7 @@ export default class FormCard extends Component {
               placeholder="место работы, должность"
             />
             <Field
-              type="number"
+              type="text"
               name="sourcePhone"
               placeholder="телефон"
             />
