@@ -3,7 +3,6 @@ import { Button, Icon, TextField, Paper, Typography, MenuItem } from "@material-
 import { makeStyles } from "@material-ui/core/styles";
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import './formCard.scss';
-//import MaterialUIPickers from '../../utils/MaterialUIPickers';
 
 const categories = [
   {
