@@ -1,6 +1,6 @@
 import Header from '../Header';
 //import FormCard from '../Card/formCard';
-import { MaterialUIFormSubmit } from '../Card/formForm';
+import { MaterialUIFormSubmit } from '../Form/formForm';
 
 function App() {
 

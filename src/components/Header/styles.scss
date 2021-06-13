@@ -6,8 +6,9 @@
   justify-content: space-between;
   background-color: rgb(66, 74, 110);
   img {
-    height: 150px;
+    height: 100px;
     width: auto;
+    box-shadow: darken($color: #000000, $amount: 0), 2, 2;
   }
 
   .center_bar {
@@ -19,9 +20,9 @@
     }
     #type_museum {
       margin: 0px 10px;
-      font-size: 18pt;
+      font-size: 10pt;
       .museumName {
-      font-size: 24pt;
+      font-size: 14pt;
       }       
     }
     .search_block {

@@ -1,157 +1,18 @@
-import React, { useReducer } from "react";
-import { Button, Icon, TextField, Paper, Typography, MenuItem } from "@material-ui/core";
+import React, { useReducer, useRef } from "react";
+import DateFnsUtils from '@date-io/date-fns';
+import 'date-fns';
+
+import { Button, TextField, Paper, Typography, MenuItem, IconButton } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
+import { KeyboardDatePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
+
 import './formCard.scss';
-
-const categories = [
-  {
-    value: 'dishes',
-    label: 'посуда'
-  },
-  {
-    value: 'Houseware',
-    label: 'быт'
-  },
-  {
-    value: 'woven',
-    label: 'тканые изделия'
-  },
-  {
-    value: 'tools',
-    label: 'орудия труда'
-  },
-  {
-    value: 'document',
-    label: 'документы'
-  },
-  {
-    value: 'money',
-    label: 'деньги'
-  },
-  {
-    value: 'book',
-    label: 'книги'
-  },
-  {
-    value: 'photo',
-    label: 'фотография'
-  },
-  {
-    value: 'technics',
-    label: 'техника'
-  },
-  {
-    value: 'archeology',
-    label: 'археологические находки'
-  },
-  {
-    value: 'fittings',
-    label: 'фурнитура'
-  },
-];
-
-const locations = [
-  {
-    value: "rzeczpospolita",
-    label: 'Речь Посполитая'
-  },
-  {
-    value: "palac",
-    label: 'Дворец'
-  },
-  {
-    value: "fates",
-    label: 'Судьбы'
-  },
-  {
-    value: "nelly",
-    label: 'Нелли'
-  },
-  {
-    value: "urban",
-    label: 'Городская'
-  },
-  {
-    value: "hatka",
-    label: 'Хатка'
-  },
-  {
-    value: "ethnography",
-    label: 'Этнография'
-  },
-  {
-    value: "local history",
-    label: 'Краеведение'
-  },
-  {
-    value: "grodno history",
-    label: 'Гродноведение'
-  },
-  {
-    value: "research",
-    label: 'Исследования'
-  },
-  {
-    value: "archive",
-    label: 'Архив'
-  },
-
-];
-
-const materials = [
-  {
-    value: "wood",
-    label: 'дерево'
-  },
-  {
-    value: "plastic",
-    label: 'пластмасса'
-  },
-  {
-    value: "metal",
-    label: 'металл'
-  },
-  {
-    value: "cloth",
-    label: 'ткань'
-  },
-  {
-    value: "glass",
-    label: 'стекло'
-  },
-  {
-    value: "paper",
-    label: 'бумага'
-  },
-  {
-    value: "ceramics",
-    label: 'керамика'
-  },
-  {
-    value: "porcelain",
-    label: 'фарфор'
-  },
-  {
-    value: "leather",
-    label: 'кожа'
-  },
-];
-
-const methodes = [
-  {
-    value: "donation",
-    label: 'Дарение'
-  },
-  {
-    value: "find",
-    label: 'Находка'
-  },
-  {
-    value: "purchase",
-    label: 'Покупка'
-  },
-]
+import { categories } from '../Array/arrCategory.js';
+import { materials } from '../Array/arrMaterial.js';
+import { locations } from '../Array/arrExhibition.js';
+import { methodes } from '../Array/arrGetMethod.js';
 
 export function MaterialUIFormSubmit(props) {
   const useStyles = makeStyles(theme => ({
@@ -178,7 +39,10 @@ export function MaterialUIFormSubmit(props) {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
       width: 400
-    }
+    },
+    input: {
+      display: 'none',
+    },
   }));
 
   const [formInput, setFormInput] = useReducer(
@@ -188,15 +52,21 @@ export function MaterialUIFormSubmit(props) {
       name: ""
     }
   );
+  const selectCategoryRef = useRef(null)
 
-
-  const handleSubmit = evt => {
-    evt.preventDefault();
+  const handleSubmit = event => {
+    event.preventDefault();
 
     let values = { formInput };
     const { onSubmit } = props;
 
     onSubmit(values);
+    event.target.reset();
+    setCategory('');
+    setLocation('');
+    setMaterial('');
+    setMethod('');
+    setSelectedDate();
   };
 
   const handleInput = evt => {
@@ -214,24 +84,29 @@ export function MaterialUIFormSubmit(props) {
 
   const handleChangeCategory = (event) => {
     setCategory(event.target.value);
+    handleInput(event);
   };
 
   const handleChangeLocation = (event) => {
     setLocation(event.target.value);
-    setMaterial(event.target.value);
-    setMethod(event.target.value);
+    handleInput(event);
   };
 
   const handleChangeMaterial = (event) => {
     setMaterial(event.target.value);
-    setMethod(event.target.value);
+    handleInput(event);
   };
 
   const handleChangeMethod = (event) => {
     setMethod(event.target.value);
+    handleInput(event);
   };
 
-  console.log(props);
+  const [selectedDate, setSelectedDate] = React.useState(new Date());
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    setFormInput({ date: date });
+  };
 
   return (
     <div>
@@ -241,20 +116,31 @@ export function MaterialUIFormSubmit(props) {
         </Typography>
         <Typography component="p">{props.formDescription}</Typography>
 
-        <form onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
+          <input accept="image/*" className={classes.input} id="icon-button-file" type="file" name="photo" onChange={handleInput} />
+          <label htmlFor="icon-button-file">
+            <IconButton color="primary" aria-label="upload picture" component="span">
+              <PhotoCamera />
+            </IconButton>
+          </label>
           <TextField
+            type="number"
+            inputProps={{min: 1}}
             label="Порядковый номер"
             id="margin-normal"
             name="order"
+            required
             defaultValue={formInput.email}
             className={classes.textField}
             helperText="порядковый номер"
             onChange={handleInput}
           />
           <TextField
+            type="text"
             label="Название"
             id="margin-normal"
             name="exhibitName"
+            required
             defaultValue={formInput.email}
             className={classes.textField}
             helperText="наименование/назва"
@@ -264,6 +150,7 @@ export function MaterialUIFormSubmit(props) {
             label="Характеристика"
             id="margin-normal"
             name="assignment"
+            required
             defaultValue={formInput.email}
             className={classes.textField}
             helperText="назначение предмета"
@@ -273,8 +160,11 @@ export function MaterialUIFormSubmit(props) {
             id="standard-select-currency"
             name="category"
             select
+            ref={selectCategoryRef}
             label="Категория"
+            required
             value={category}
+            className={classes.textField}
             onChange={handleChangeCategory}
             helperText="Выберите категорию"
           >
@@ -288,6 +178,7 @@ export function MaterialUIFormSubmit(props) {
             label="Описание"
             id="margin-normal"
             name="description"
+            required
             defaultValue={formInput.name}
             className={classes.textField}
             helperText="описание внешнего вида"
@@ -298,6 +189,7 @@ export function MaterialUIFormSubmit(props) {
             name="location"
             select
             label="Место расположения"
+            className={classes.textField}
             value={location}
             onChange={handleChangeLocation}
             helperText="Выберите экспозицию"
@@ -320,9 +212,11 @@ export function MaterialUIFormSubmit(props) {
           <TextField
             id="standard-select-currency"
             name="material"
+            required
             select
             label="Материал"
             value={material}
+            className={classes.textField}
             onChange={handleChangeMaterial}
             helperText="Выберите из списка"
           >
@@ -336,6 +230,7 @@ export function MaterialUIFormSubmit(props) {
             label="Сохранность"
             id="margin-normal"
             name="safety"
+            required
             defaultValue={formInput.name}
             className={classes.textField}
             helperText="описание состояния"
@@ -350,21 +245,29 @@ export function MaterialUIFormSubmit(props) {
             helperText="№ акта приёмки"
             onChange={handleInput}
           />
-          <TextField
-            label="Дата поступления"
-            id="margin-normal"
-            name="receipDate"
-            defaultValue={formInput.name}
-            className={classes.textField}
-            helperText="ГГГГ/ММ/ДД"
-            onChange={handleInput}
-          />
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              margin="normal"
+              id="date-picker-dialog"
+              className={classes.textField}
+              label="Выберите дату поступления"
+              name="receipDate"
+              format="yyyy/MM/dd"
+              value={selectedDate}
+              onChange={handleDateChange}
+              helperText="ГГГГ/ММ/ДД"
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}
+            />
+          </MuiPickersUtilsProvider>
           <TextField
             id="standard-select-currency"
             name="method"
             select
             label="Способ получения"
             value={method}
+            className={classes.textField}
             onChange={handleChangeMethod}
             helperText="Выберите из списка"
           >
