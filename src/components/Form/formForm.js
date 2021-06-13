@@ -29,7 +29,9 @@ export function MaterialUIFormSubmit(props) {
       fontSize: 20
     },
     root: {
-      padding: theme.spacing(3, 2)
+      padding: theme.spacing(3, 2),
+      position: "relative",
+      left: "80%"
     },
     container: {
       display: "flex",
@@ -38,7 +40,8 @@ export function MaterialUIFormSubmit(props) {
     textField: {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
-      width: 400
+      transition: theme.transitions.create('width'),
+      width: '100%'
     },
     input: {
       display: 'none',
@@ -109,7 +112,7 @@ export function MaterialUIFormSubmit(props) {
   };
 
   return (
-    <div>
+    <div className="">
       <Paper className={classes.root}>
         <Typography variant="h5" component="h3">
           {props.formName}

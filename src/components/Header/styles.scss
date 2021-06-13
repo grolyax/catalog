@@ -5,57 +5,63 @@
   display: flex;
   justify-content: space-between;
   background-color: rgb(66, 74, 110);
+  
   img {
-    height: 100px;
+    height: 90px;
     width: auto;
     box-shadow: darken($color: #000000, $amount: 0), 2, 2;
   }
 
   .center_bar {
+    flex-grow: 2;
     text-align: left;
     margin: 0;
     color: #ffffff;
     h2 {
-      margin: 10px;
+      margin: 3px 10px;
     }
     #type_museum {
       margin: 0px 10px;
-      font-size: 10pt;
+      font-size: 11pt;
       .museumName {
       font-size: 14pt;
       }       
     }
     .search_block {
+      height: 30px;
       display: flex;
-      justify-content: space-between;
-      margin: 0;
+      margin: 5px 0 0 0;
       color: white;
       .search {
         display: flex;
         justify-content: space-between;
         margin: 10px 10px 0 10px;
         input {
-         
           height: 30px;
           width: 250px;
           border-radius: 10px;
         }
       }
       p {
-        margin: 20px 10px 0 10px;
+        margin: 5px 10px 0 100px;
       }
     }
   }
     .navigation {
       .navigation_bar {
         display: flex; 
+        .MuiIconButton-root {
+          padding: 5px;
+        }
       }
       .user_block {
-        text-align: right;
+        display: flex;
+        justify-content: space-between;
         padding: 0 20px;
         font-size: 14pt;
+        height: 30px;
         p {
-          margin: 10px 0px;
+          margin: 5px 0px;
           color: #f8f8da;
         }
       }
