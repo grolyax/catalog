@@ -1,46 +1,46 @@
 export let categories = [
   {
-    value: 'dishes',
+    value: 'посуда',
     label: 'посуда'
   },
   {
-    value: 'Houseware',
+    value: 'быт',
     label: 'быт'
   },
   {
-    value: 'woven',
+    value: 'тканые изделия',
     label: 'тканые изделия'
   },
   {
-    value: 'tools',
+    value: 'орудия труда',
     label: 'орудия труда'
   },
   {
-    value: 'document',
+    value: 'документы',
     label: 'документы'
   },
   {
-    value: 'money',
+    value: 'деньги',
     label: 'деньги'
   },
   {
-    value: 'book',
+    value: 'книги',
     label: 'книги'
   },
   {
-    value: 'photo',
+    value: 'фотография',
     label: 'фотография'
   },
   {
-    value: 'technics',
+    value: 'техника',
     label: 'техника'
   },
   {
-    value: 'archeology',
+    value: 'археологические находки',
     label: 'археологические находки'
   },
   {
-    value: 'fittings',
+    value: 'фурнитура',
     label: 'фурнитура'
   },
 ];

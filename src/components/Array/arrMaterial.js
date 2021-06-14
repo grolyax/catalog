@@ -1,54 +1,54 @@
 export let materials = [
   {
-    value: "wood",
+    value: "дерево",
     label: 'дерево'
   },
   {
-    value: "plastic",
-    label: 'пластмасса'
+    value: "пластик",
+    label: 'пластик'
   },
   {
-    value: "metal",
+    value: "металл",
     label: 'металл'
   },
   {
-    value: "cloth",
+    value: "ткань",
     label: 'ткань'
   },
   {
-    value: "glass",
+    value: "стекло",
     label: 'стекло'
   },
   {
-    value: "paper",
+    value: "бумага",
     label: 'бумага'
   },
   {
-    value: "ceramics",
+    value: "керамика",
     label: 'керамика'
   },
   {
-    value: "porcelain",
+    value: "фарфор",
     label: 'фарфор'
   },
   {
-    value: "leather",
+    value: "кожа",
     label: 'кожа'
   },
   {
-    value: "bast",
-    label: 'лыка'
+    value: "лыко",
+    label: 'лыко'
   },
   {
-    value: "straw",
+    value: "солома",
     label: 'солома'
   },
   {
-    value: "stone",
+    value: "камень",
     label: 'камень'
   },
   {
-    value: "flax",
+    value: "лён",
     label: 'лён'
   },
 ];

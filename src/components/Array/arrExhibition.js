@@ -1,46 +1,46 @@
 export let locations = [
   {
-    value: "rzeczpospolita",
-    label: 'Речь Посполитая'
+    value: "королевская",
+    label: 'королевская'
   },
   {
-    value: "palac",
+    value: "дворец",
     label: 'Дворец'
   },
   {
-    value: "fates",
+    value: "судьбы",
     label: 'Судьбы'
   },
   {
-    value: "nelly",
+    value: "Нелли",
     label: 'Нелли'
   },
   {
-    value: "urban",
+    value: "городская",
     label: 'Городская'
   },
   {
-    value: "hatka",
+    value: "хатка",
     label: 'Хатка'
   },
   {
-    value: "ethnography",
+    value: "этнография",
     label: 'Этнография'
   },
   {
-    value: "local history",
+    value: "краеведение",
     label: 'Краеведение'
   },
   {
-    value: "grodno history",
+    value: "Гродноведение",
     label: 'Гродноведение'
   },
   {
-    value: "research",
+    value: "исследования",
     label: 'Исследования'
   },
   {
-    value: "archive",
+    value: "архив",
     label: 'Архив'
   },
 

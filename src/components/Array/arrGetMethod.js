@@ -1,14 +1,14 @@
 export let methodes = [
   {
-    value: "donation",
+    value: "дарение",
     label: 'Дарение'
   },
   {
-    value: "find",
+    value: "находка",
     label: 'Находка'
   },
   {
-    value: "purchase",
+    value: "покупка",
     label: 'Покупка'
   },
 ];
