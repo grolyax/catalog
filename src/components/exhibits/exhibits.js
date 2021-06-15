@@ -55,7 +55,7 @@ let exhibits = [
       name: "лампа",
       notes: "привезена из деревни Мешетники",
       order: "3",
-      photo: "../../../photo/exhibits/Г4Гр-2.JPG",
+      photo: "../../../photo/exhibits/Г4Гр-3.JPG",
       quantity: "1",
       safety: "металлическая поверхность с ржавчиной, стекло поцарапано",
       sizes: "500/260",

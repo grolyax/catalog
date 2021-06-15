@@ -30,7 +30,7 @@ export function MaterialUIFormSubmit(props) {
     },
     root: {
       padding: theme.spacing(3, 2),
-      position: "relative",
+      position: "absolute",
       left: "75%"
     },
     container: {
